@@ -37,7 +37,21 @@
                             <td>{{ $book->publication_date }}</td>
                             <td>{{ $book->synopsis }}</td>
                             <td>{{ ($book->available == 1) ? 'Yes': 'No' }}</td>
-                            <td><a class="btn btn-primary btn-sm" href="{{route('books.edit', $book)}}">Update</a>
+                            <td>
+                                <div class="d-flex">
+                                    <a class="btn btn-primary btn-sm" href="{{route('books.edit', $book)}}">Update</a>
+                                    <a class="btn btn-warning btn-sm" href="{{route('books.show', $book)}}">Show</a>
+                                    <form method="post"
+                                          action="{{ route('books.destroy', $book) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('Are you sure you want to delete this task?')">
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                </div>
                             </td>
                         </tr>
                     @endforeach

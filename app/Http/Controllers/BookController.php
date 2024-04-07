@@ -39,9 +39,11 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return view('books.show', [
+            'book' => $book,
+        ]);
     }
 
     /**
@@ -68,8 +70,9 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return back();
     }
 }
