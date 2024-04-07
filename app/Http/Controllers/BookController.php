@@ -31,7 +31,6 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $request->merge(["available" => $request->has('available')]);
         $book = new Book($request->all());
         $book->save();
         return redirect()->route('books.index');
@@ -62,7 +61,6 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, Book $book)
     {
-        $request->merge(["available" => $request->has('available')]);
         $book->update($request->all());
         return redirect()->route('books.index');
     }

@@ -52,12 +52,12 @@
                 <textarea class="form-control" id="synopsis" rows="3" name="synopsis"
                           required> {{ old('synopsis', $book->synopsis) }} </textarea>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="available"
-                       id="available" value="true" {{ old('available', $book->available ? 'checked' : '') }}>
-                <label class="form-check-label" for="available">
-                    Available
-                </label>
+            <div class="form-group">
+                <label for="available">Availability:</label>
+                <select class="form-control" id="available" name="available">
+                    <option value="1" {{ old('available', $book->available) == '1' ? 'selected' : '' }}>Available</option>
+                    <option value="0" {{ old('available', $book->available) == '0' ? 'selected' : '' }}>Not Available</option>
+                </select>
             </div>
             @if($errors->any())
                 <div class="col-12 mt-2">

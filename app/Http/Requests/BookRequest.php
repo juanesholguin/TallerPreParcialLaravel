@@ -29,7 +29,7 @@ class BookRequest extends FormRequest
             'number_chapters' => ['required', 'integer', 'min:1'],
             'publication_date' => ['required', 'date'],
             'synopsis' => ['required', 'string'],
-            'available_book' => ['boolean'],
+            'available' => ['boolean'],
         ];
     }
 }
